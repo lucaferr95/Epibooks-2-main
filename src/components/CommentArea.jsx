@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import CommentList from "../components/CommentLists";
 import AddComment from "../components/AddComments";
 const URL = `https://striveschool-api.herokuapp.com/api/comments`;
-const TOKEN =
-  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2RkOGE1NjM4MzRiZjAwMTUwMDA5ZWIiLCJpYXQiOjE3NDM2ODA5NTUsImV4cCI6MTc0NDg5MDU1NX0.eUEdO6Xo7sMCUSlmWNQm_vy_Xz7ezGpz1chLlenM-iI";
+
 
 class CommentArea extends Component {
   state = {
@@ -11,9 +10,10 @@ class CommentArea extends Component {
   };
 
   getComments = () => {
-    fetch(URL + this.props.asin, {
+    fetch(URL + "/" + this.props.asin, {
       headers: {
-        Authorization: TOKEN,
+        authorization:
+          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWJiYWIwMjViMjYxNTAwMTk4YTY5NmEiLCJpYXQiOjE3NDM2OTM5NzksImV4cCI6MTc0NDkwMzU3OX0.lwf-ZIFoaovBa04KJbdJgNOkivE8F7TkiASjtoOsHWs',
       },
     })
       .then((response) => {
@@ -31,17 +31,18 @@ class CommentArea extends Component {
         console.log(err);
       });
   };
-  componetDidMount = () => {
+  componentDidMount = () => {
     this.getComments();
   };
   render() {
     return (
       <div className="comment-area mt-3">
-        <CommentList comments={this.state.comments} />
+       
         <AddComment
           asin={this.props.asin}
-          onCommentAdded={this.addComment}
+
         />
+         <CommentList comments={this.state.comments} />
       </div>
     );
   }
