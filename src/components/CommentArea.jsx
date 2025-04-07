@@ -9,10 +9,12 @@ class CommentArea extends Component {
   };
 
   getComments = () => {
+    if (!this.props.asin) return; // <-- evita fetch inutili
+  
     fetch(URL + "/" + this.props.asin, {
       headers: {
         authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWJiYWIwMjViMjYxNTAwMTk4YTY5NmEiLCJpYXQiOjE3NDM2OTM5NzksImV4cCI6MTc0NDkwMzU3OX0.lwf-ZIFoaovBa04KJbdJgNOkivE8F7TkiASjtoOsHWs",
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
       },
     })
       .then((response) => {
@@ -23,13 +25,14 @@ class CommentArea extends Component {
         }
       })
       .then((data) => {
-        console.log("DATA", data);
+        console.log("DATA", data); // verifica che arrivi un array
         this.setState({ comments: data });
       })
       .catch((err) => {
         console.log(err);
       });
   };
+  
 
   componentDidUpdate = (prevProps) => {
     if (prevProps.asin !== this.props.asin) {

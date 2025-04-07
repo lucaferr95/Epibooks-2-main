@@ -2,7 +2,7 @@ import React from "react";
 import { Col, Container, Row, Carousel } from "react-bootstrap";
 import SingleBook from "./SingleBook";
 import CommentArea from "./CommentArea";
-
+import { Component } from "react";
 class BookList extends Component {
   state = {
     asin: "",
@@ -28,11 +28,11 @@ class BookList extends Component {
     const chunkedBooks = this.chunkArray(BooksArray, 4);
 
     return (
-      <Container fluid className="py-4">
-        <Row className="d-md-flex">
+      <Container fluid className="py-4 d-flex w-100 justify-content-center align-items-stretch">
+        <Row className="d-md-flex justify-content-center ">
           {/* Carousel a sinistra */}
-          <Col xs={12} md={6} className=" bg-black text-light">
-            <h3 className="text-center mb-4">Seleziona un libro</h3>
+          <Col xs={12} md={8} className=" bg-black text-light">
+            <h3 className="text-center mb-4 special-elite-regular text-white">Seleziona un libro</h3>
             <Carousel
               interval={null}
               prevIcon={
@@ -67,7 +67,8 @@ class BookList extends Component {
               }
             >
               {chunkedBooks.map((bookGroup, index) => (
-                <Carousel.Item key={index}>
+                <Carousel.Item style={{ minHeight: "500px" }}
+key={index}>
                   <Row className="justify-content-center">
                     {bookGroup.map((book) => (
                       <Col key={book.asin} xs={12} md={3}>
@@ -85,7 +86,7 @@ class BookList extends Component {
           </Col>
 
           {/* CommentArea a destra */}
-          <Col xs={12} md={3} className="bg-dark text-light p-4">
+          <Col xs={12} md={4} className="bg-dark text-light p-4">
             <h4 className="text-center mb-3">Recensioni</h4>
             <CommentArea asin={this.state.asin} />
           </Col>

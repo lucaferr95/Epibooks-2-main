@@ -40,7 +40,8 @@ class SingleBook extends Component {
   render() {
     return (
       <div
-        className={`card h-100 bg-info opacity-75 ${
+        className={`card h-100 bg-info opacity-75 card-body d-flex flex-column justify-content-between" style={{ minHeight: "200px" }}>
+ ${
           this.state.selected ? "border border-danger " : ""
         }`}
         onClick={this.toggleSelection}
@@ -48,7 +49,7 @@ class SingleBook extends Component {
         <img
           src={this.props.book.img}
           alt={"immagine di " + this.props.book.title}
-          className="d-block mx-auto"
+          className=" mx-auto"
           onClick={() => {
             this.props.cambiaasin(this.props.book.asin);
           }}
