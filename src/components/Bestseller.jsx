@@ -31,9 +31,7 @@ const Bestseller = (props) => {
                     <h5 className="d-flex flex-column flex-grow-1">
                       {libro.title}
                     </h5>
-                    <h6 className="card-title">
-                    {libro.description}
-                    </h6>
+                    <h6 className="card-title">{libro.description}</h6>
                     <p className="mb-0">€ {libro.price} </p>
                     <button className="bg-black opacity-75">
                       <a

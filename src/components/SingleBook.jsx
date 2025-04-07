@@ -1,5 +1,5 @@
 import { Component } from "react";
-import CommentArea from "./CommentArea";
+
 /*import CommentArea from "../components/CommentArea";
 //QUI ABBIAMO IL SINGLE BOOK CON FUNCTION
 /*const SingleBook = function (props) {
@@ -49,6 +49,9 @@ class SingleBook extends Component {
           src={this.props.book.img}
           alt={"immagine di " + this.props.book.title}
           className="d-block mx-auto"
+          onClick={() => {
+            this.props.cambiaasin(this.props.book.asin);
+          }}
           style={{
             width: "100%",
             height: "300px",
@@ -59,9 +62,7 @@ class SingleBook extends Component {
           <h5 className="d-flex flex-column flex-grow-1">
             {this.props.book.title}
           </h5>
-          <h6 className="card-title">
-                    {this.props.book.description}
-                    </h6>
+          <h6 className="card-title">{this.props.book.description}</h6>
           <p className="mb-0">€ {this.props.book.price}</p>
           <button className="bg-black opacity-75">
             <a
@@ -72,7 +73,6 @@ class SingleBook extends Component {
             </a>
           </button>
         </div>
-        {this.state.selected && <CommentArea asin={this.props.book.asin} />}
       </div>
     );
   }
