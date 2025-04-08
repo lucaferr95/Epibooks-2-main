@@ -14,7 +14,7 @@ class CommentArea extends Component {
     fetch(URL + "/" + this.props.asin, {
       headers: {
         authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2Y0ZWJhNzgxYjBkZDAwMTUwYTdhM2UiLCJpYXQiOjE3NDQxMDQzNTksImV4cCI6MTc0NTMxMzk1OX0.NHMyM-ReX8Ho5M5EHi7i6ItGTvUfxV6FlNuaX9cS3-c",
       },
     })
       .then((response) => {

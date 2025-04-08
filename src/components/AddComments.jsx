@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Button, Form } from "react-bootstrap";
 
 const URL = 'https://striveschool-api.herokuapp.com/api/comments/'
-const TOKEN = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWJiYWIwMjViMjYxNTAwMTk4YTY5NmEiLCJpYXQiOjE3NDM2OTM5NzksImV4cCI6MTc0NDkwMzU3OX0.lwf-ZIFoaovBa04KJbdJgNOkivE8F7TkiASjtoOsHWs";
 
 class AddComment extends Component {
   state = {
@@ -18,7 +17,7 @@ class AddComment extends Component {
     fetch(URL, {
       method: "POST",
       body: JSON.stringify(this.state.comments),
-      headers: { "Content-Type": "application/json", authorization: TOKEN },
+      headers: { "Content-Type": "application/json", authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2Y0ZWJhNzgxYjBkZDAwMTUwYTdhM2UiLCJpYXQiOjE3NDQxMDQzNTksImV4cCI6MTc0NTMxMzk1OX0.NHMyM-ReX8Ho5M5EHi7i6ItGTvUfxV6FlNuaX9cS3-c" },
     })
       .then((response) => {
         if (response.ok) {
@@ -37,6 +36,14 @@ class AddComment extends Component {
         console.error("Errore:", err);
       });
   };
+  componentDidUpdate(prevProps) {
+    if (prevProps.asin !== this.props.asin) {
+      this.setState({
+        comments: { ...this.state.comments, elementId: this.props.asin },
+      });
+    }
+  }
+  
 
   render() {
     return (
