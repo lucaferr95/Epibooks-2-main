@@ -16,6 +16,10 @@ const [asin, setAsin] = useState()
   const handleBookSelect = (asin) => {
     setSelectedAsin(asin === selectedAsin ? null : asin);
   };
+  const handleAddComment = (newComment) => {
+    // Logica per aggiungere il commento (ad esempio, aggiorna lo stato)
+    console.log("Nuovo commento:", newComment);
+  };
 
 
   const chunkArray = (array, chunkSize) => {
@@ -95,7 +99,7 @@ key={index}>
           {/* CommentArea a destra */}
           <Col xs={12} md={4} className="bg-dark  text-light mt-5 p-4 border-white">
             <h4 className="text-center my-3 fw-bold">Recensioni</h4>
-            <CommentArea asin={asin} />
+            <CommentArea asin={asin} onAddComment={handleAddComment} />
           </Col>
         </Row>
       </Container>

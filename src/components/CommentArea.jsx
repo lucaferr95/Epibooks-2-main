@@ -5,10 +5,14 @@ const URL = `https://striveschool-api.herokuapp.com/api/comments`;
 
 const CommentArea = function (props) {
   const [comments, setComments] = useState([]);
+  const handleSubmit = (newComment) => {
+    // Aggiungi il nuovo commento all'array dei commenti
+    setComments((prevComments) => [newComment, ...prevComments]); 
+  };
 
   const getComments = () => {
     if (!props.asin) return; // <-- evita fetch inutili
-
+  
     fetch(URL + "/" + props.asin, {
       headers: {
         authorization:
@@ -40,7 +44,8 @@ const CommentArea = function (props) {
 
   return (
     <div className="comment-area g-2 mt-2">
-      <AddComment asin={props.asin} />
+    <AddComment asin={props.asin} onAddComment={handleSubmit} />
+
       <CommentList comments={comments} onNewComment={getComments} />
     </div>
   );

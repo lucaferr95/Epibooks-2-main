@@ -10,7 +10,14 @@ const AddComment = function (props) {
     rate: "",
     elementId: props.asin, // assicuriamoci che l'asin venga passato come props
   });
-
+  const handleAddComment = (e) => {
+    e.preventDefault();
+    // Crea un nuovo commento e invialo a CommentArea
+    const newComment = {
+      comment: comments.comment, // Corretto
+    };
+    props.onAddComment(newComment);
+  };
   // Aggiorna l'elementId quando asin cambia
   useEffect(() => {
     setComments((prevData) => ({
@@ -48,7 +55,9 @@ const AddComment = function (props) {
           comment: "",
           rate: "",
           elementId: props.asin,
+         
         });
+        props.onAddComment(data);
       })
       .catch((err) => {
         console.error("Errore:", err);

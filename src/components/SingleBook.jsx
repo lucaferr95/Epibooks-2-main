@@ -34,7 +34,7 @@ const SingleBook = function (props) {
   return (
     <div
       className={`card h-100 bg-info opacity-75 card-body d-flex flex-column justify-content-between ${
-        props.isSelected ? "border-danger" : ""
+        props.isSelected ? "border-danger-custom" : ""
       }`}
       onClick={() => props.onSelect(props.book.asin)}
       style={{ minHeight: "200px", cursor: "pointer" }}
