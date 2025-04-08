@@ -39,9 +39,9 @@ const CommentArea = function (props) {
   );
 
   return (
-    <div className="comment-area mt-3">
+    <div className="comment-area g-2 mt-2">
       <AddComment asin={props.asin} />
-      <CommentList comments={comments} />
+      <CommentList comments={comments} onNewComment={getComments} />
     </div>
   );
 };

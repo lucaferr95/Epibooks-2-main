@@ -58,11 +58,11 @@ const AddComment = function (props) {
   return (
     <div onClick={(e) => e.stopPropagation()}>
       <form onSubmit={sendComments}>
-        <div className="form-group">
+        <div className="form-group text-center ">
           <label htmlFor="comment">Aggiungi un commento</label>
           <textarea
             id="comment"
-            className="form-control"
+            className="form-control my-3 "
             value={comments.comment}
             required
             onClick={(e) => e.stopPropagation()} // Mantiene stopPropagation nel textarea
@@ -72,9 +72,9 @@ const AddComment = function (props) {
           ></textarea>
         </div>
         <div className="form-group">
-          <Form.Group className="mb-3">
+          <Form.Group className="my-3 text-center">
             <Form.Label>Voto (1-5)</Form.Label>
-            <Form.Select
+            <Form.Select className="bg-dark text-white"
               id="rating"
               value={comments.rate}
               required
@@ -83,6 +83,7 @@ const AddComment = function (props) {
                 setComments({ ...comments, rate: e.target.value })
               }
             >
+              
               <option value="">Seleziona un voto</option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -92,7 +93,7 @@ const AddComment = function (props) {
             </Form.Select>
           </Form.Group>
         </div>
-        <Button type="submit" className="bg-black opacity-75 text-light mt-3">
+        <Button type="submit" className="bg-black opacity-75 text-light mb-2 border-danger ">
           Aggiungi Commento
         </Button>
       </form>

@@ -86,8 +86,8 @@ key={index}>
           </Col>
 
           {/* CommentArea a destra */}
-          <Col xs={12} md={4} className="bg-dark text-light p-4">
-            <h4 className="text-center mb-3">Recensioni</h4>
+          <Col xs={12} md={4} className="bg-dark  text-light mt-5 p-4 border-white">
+            <h4 className="text-center my-3 fw-bold">Recensioni</h4>
             <CommentArea asin={asin} />
           </Col>
         </Row>
