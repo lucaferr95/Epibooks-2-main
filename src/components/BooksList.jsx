@@ -1,18 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { Col, Container, Row, Carousel } from "react-bootstrap";
 import SingleBook from "./SingleBook";
 import CommentArea from "./CommentArea";
-import { Component } from "react";
-class BookList extends Component {
-  state = {
-    asin: "",
+
+const BookList = function(props){
+ // state = {
+   // asin: "",
+ // };
+const [asin, setAsin] = useState()
+  const changeAsin = (newAsin) => {
+   setAsin(newAsin );
   };
 
-  changeAsin = (newAsin) => {
-    this.setState({ asin: newAsin });
-  };
-
-  chunkArray = (array, chunkSize) => {
+  const chunkArray = (array, chunkSize) => {
     return array.reduce((result, item, index) => {
       const chunkIndex = Math.floor(index / chunkSize);
       if (!result[chunkIndex]) {
@@ -23,9 +23,9 @@ class BookList extends Component {
     }, []);
   };
 
-  render() {
-    const { BooksArray } = this.props;
-    const chunkedBooks = this.chunkArray(BooksArray, 4);
+
+    const { BooksArray } = props;
+    const chunkedBooks = chunkArray(BooksArray, 4);
 
     return (
       <Container fluid className="py-4 d-flex w-100 justify-content-center align-items-stretch">
@@ -74,8 +74,8 @@ key={index}>
                       <Col key={book.asin} xs={12} md={3}>
                         <SingleBook
                           book={book}
-                          cambiaasin={this.changeAsin}
-                          asinLibroSelezionato={this.state.asin}
+                          cambiaasin={changeAsin}
+                          asinLibroSelezionato={asin}
                         />
                       </Col>
                     ))}
@@ -88,12 +88,11 @@ key={index}>
           {/* CommentArea a destra */}
           <Col xs={12} md={4} className="bg-dark text-light p-4">
             <h4 className="text-center mb-3">Recensioni</h4>
-            <CommentArea asin={this.state.asin} />
+            <CommentArea asin={asin} />
           </Col>
         </Row>
       </Container>
     );
   }
-}
 
 export default BookList;

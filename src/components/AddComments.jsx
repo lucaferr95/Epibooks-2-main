@@ -31,7 +31,7 @@ const AddComment = function (props) {
       body: JSON.stringify(comments),
       headers: {
         "Content-Type": "application/json",
-        authorization: "Bearer YOUR_TOKEN_HERE", // Sostituisci con il token giusto
+        authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2Y0ZWJhNzgxYjBkZDAwMTUwYTdhM2UiLCJpYXQiOjE3NDQxNDYyNjAsImV4cCI6MTc0NTM1NTg2MH0.Vi1qyyeKsYpOGYsG5rdiWOiR6BhX8fVdxXQZ3sXiUr0", // Sostituisci con il token giusto
       },
     })
       .then((response) => {
