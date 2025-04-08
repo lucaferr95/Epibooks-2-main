@@ -11,6 +11,12 @@ const [asin, setAsin] = useState()
   const changeAsin = (newAsin) => {
    setAsin(newAsin );
   };
+  const [selectedAsin, setSelectedAsin] = useState(null);
+
+  const handleBookSelect = (asin) => {
+    setSelectedAsin(asin === selectedAsin ? null : asin);
+  };
+
 
   const chunkArray = (array, chunkSize) => {
     return array.reduce((result, item, index) => {
@@ -74,8 +80,9 @@ key={index}>
                       <Col key={book.asin} xs={12} md={3}>
                         <SingleBook
                           book={book}
+                          isSelected={book.asin === selectedAsin}
+                          onSelect={handleBookSelect}
                           cambiaasin={changeAsin}
-                          asinLibroSelezionato={asin}
                         />
                       </Col>
                     ))}

@@ -31,18 +31,13 @@ export default SingleBook;
 //QUA ANDIAMO A FARE IL SINGLEBOOK CON CLASS (GLI HO DATO GIA' L'IMPOSTAZIONE CON LE CARDS PERSONALIZZATE)
 
 const SingleBook = function (props) {
-  const [selected, setSelected] = useState(false);
-  const toggleSelection = () => {
-    setSelected(!selected);
-  };
-
   return (
     <div
       className={`card h-100 bg-info opacity-75 card-body d-flex flex-column justify-content-between ${
-        selected ? "border border-danger" : ""
+        props.isSelected ? "border-danger" : ""
       }`}
+      onClick={() => props.onSelect(props.book.asin)}
       style={{ minHeight: "200px", cursor: "pointer" }}
-      onClick={toggleSelection}
     >
       <img
         src={props.book.img}
